@@ -1,6 +1,6 @@
 var express = require('express');
 var fs = require('fs');
-var indexContent = fs.readFile('./index.html');
+var indexContent = fs.readFileSync('./index.html');
 ear app = express.createServer(express.logger());
 
 app.get('/', function(request, response) {
