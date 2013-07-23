@@ -68,7 +68,6 @@ var loadChecks = function(checksfile) {
 
 var checkHtmlFile = function(htmlfile, checksfile) {
     $ = cheerioHtmlFile(htmlfile);
-console.log($);
     var checks = loadChecks(checksfile).sort();
     var out = {};
     for(var ii in checks) {
@@ -90,7 +89,6 @@ if(require.main == module) {
         .option('-f, --file <html_file>', 'Path to index.html', clone(assertFileExists))
         .option('-u, --url <url>', 'Url to file', clone(function(url){return(url)}))
         .parse(process.argv);
-console.log(program.url);
     if (program.file) {
         var checkJson = checkHtmlFile(program.file, program.checks);
         var outJson = JSON.stringify(checkJson, null, 4);
@@ -102,17 +100,3 @@ console.log(program.url);
     exports.checkHtmlFile = checkHtmlFile;
 }
 
-
-/*
-var rest = require('restler');
-var rest = require('restler');
-var rest = require('restler');
-rest.get('http://google.com').on('complete', function(result) {
-  if (result instanceof Error) {
-    console.log('Error: ' + result.message);
-    this.retry(5000); // try again after 5 sec
-  } else {
-    console.log(result);
-  }
-});
-*/
